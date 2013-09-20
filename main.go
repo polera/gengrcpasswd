@@ -67,10 +67,20 @@ func main() {
 		set.Password = generateString(*passLength, asciiChars)
 		ps.Set = append(ps.Set, set)
 	}
-	fmt.Printf("\nUSERNAME %s  PASSWORD\n", strings.Repeat(" ", *userLength-8))
+	usernamePadding := 0
+    outputPadding := 0
+	if *userLength > 8 {
+		usernamePadding = *userLength - 8
+	} else{
+        outputPadding = 8 - *userLength
+    }
+     
+    
+
+	fmt.Printf("\nUSERNAME %s  PASSWORD\n", strings.Repeat(" ", usernamePadding))
 	fmt.Printf("%s\n", strings.Repeat("-", *userLength+*passLength+3))
 	for _, passwordSet := range ps.Set {
-		fmt.Printf("%s : %s\n", passwordSet.Username, passwordSet.Password)
+		fmt.Printf("%s %s: %s\n", passwordSet.Username, strings.Repeat(" ",outputPadding), passwordSet.Password)
 	}
 
 }

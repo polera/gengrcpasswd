@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"math/rand"
-    "strings"
+	"strings"
 	"time"
 )
 
@@ -25,11 +25,11 @@ func getRand() int {
 }
 
 func generateString(length int, population string) string {
-    tmpString := ""
-    for i:= 0; i < length; i++ {
-       tmpString += string(population[getRand()])
-    }
-    return tmpString
+	tmpString := ""
+	for i := 0; i < length; i++ {
+		tmpString += string(population[getRand()])
+	}
+	return tmpString
 }
 
 var (
@@ -37,7 +37,6 @@ var (
 	userLength = flag.Int("userlen", 8, "Desired username length")
 	passLength = flag.Int("passwordlen", 8, "Desired password length")
 )
-
 
 func main() {
 	flag.Parse()
@@ -68,7 +67,8 @@ func main() {
 		set.Password = generateString(*passLength, asciiChars)
 		ps.Set = append(ps.Set, set)
 	}
-    fmt.Printf("\n\nUSERNAME %s: PASSWORD\n", strings.Repeat(" ",*userLength-8))
+	fmt.Printf("\nUSERNAME %s  PASSWORD\n", strings.Repeat(" ", *userLength-8))
+	fmt.Printf("%s\n", strings.Repeat("-", *userLength+*passLength+3))
 	for _, passwordSet := range ps.Set {
 		fmt.Printf("%s : %s\n", passwordSet.Username, passwordSet.Password)
 	}

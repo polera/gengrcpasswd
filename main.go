@@ -6,7 +6,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"math/rand"
 	"strings"
-	"time"
 )
 
 type PasswordSets struct {
@@ -19,7 +18,6 @@ type PasswordSet struct {
 }
 
 func getRand() int {
-	rand.Seed(time.Now().UTC().UnixNano())
 	randomNum := rand.Intn(62)
 	return randomNum
 }
